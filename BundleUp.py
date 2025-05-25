@@ -5,7 +5,7 @@ import json
 import os
 
 # --- Google API Setup ---
-API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyDUOFfF7_9Zz27THpNFO_bKAvHXce13OgE')  # Replace with your actual key
+API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyDUOFfF7_9Zz27THpNFO_bKAvHXce13OgE')  
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash')
 
@@ -181,7 +181,7 @@ if user_query:
 
                 if full_price - suggested_price > 0 and (full_price - suggested_price)/full_price < 0.28:
                     discount_percentage = 100 * (full_price - suggested_price) / full_price
-                    discount_message = f"🎉 Κερδίζεις {discount_percentage:.0f}%! Μπράβο έξυπνε Bundler🔥!"
+                    discount_message = f"🎉 Κερδίζεις {discount_percentage:.0f}%! Καλή Επιλογή🔥!"
 
                     st.markdown(f"### 📦 {bundle['bundleName']}")
                     st.markdown("**Τι περιλαμβάνεται:**")
