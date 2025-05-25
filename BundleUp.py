@@ -5,18 +5,18 @@ import json
 import os
 
 # --- Google API Setup ---
-API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyDUOFfF7_9Zz27THpNFO_bKAvHXce13OgE')  
-genai.configure(api_key=API_KEY)
+API_KEY = os.getenv('GEMINI_API_KEY', 'YOUR_API_KEY')  
+genai.configure(api_key=API_KEY) 
 model = genai.GenerativeModel('gemini-2.0-flash')
 
 # --- Load Data ---
 @st.cache_data
 def load_data(file_path, sheet):
     try:
-        return pd.read_excel(file_path, sheet_name=sheet).head(600)
+        return pd.read_excel(file_path, sheet_name=sheet).head(1600)
     except Exception as e:
         st.error(f"Error reading Excel file: {e}")
-        return pd.DataFrame().head(60)
+        return pd.DataFrame().head(1600)    
 
 # --- Generate AI Bundles ---
 def generate_bundles(focus_product, related_products, based_on="product"):
@@ -117,7 +117,7 @@ def generate_bundles(focus_product, related_products, based_on="product"):
 # --- Streamlit UI ---
 st.set_page_config(page_title="BundleUp", layout="centered")
 st.title("📦 BundleUp")
-st.text("Every purchase is a chance to bundle up! Ας κάνουμε κάποιες φοβερές αγορές μαζί! \n 😏10% από τα κέρδη πάνε στους Γιατρούς χωρίς σύνορα!!! \n\n")
+st.text("Every purchase is a chance to bundle up! Ας κάνουμε κάποιες φοβερές αγορές μαζί! \n 😏7% από τα κέρδη πάνε στους Γιατρούς χωρίς σύνορα!!! \n\n")
 
 # Load your Excel file
 excel_path = "customerdata.xlsx"  # Make sure this file is in the same folder
